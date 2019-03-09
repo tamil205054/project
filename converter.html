@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Simple Calculator</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .button{
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                margin:2px;
+
+            }
+            .display
+            {
+                width: 214px;
+                margin:1%;
+            }
+        </style>
+    </head>
+    <body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-xs-12">
+                    <div class="jumbotron">
+                        <div class="well" style="text-align:center;">
+                            Converter
+                        </div>
+                        <form action="">
+                            <select name="" id="opn" class="form-control ">
+                                <option value="non">Select the converter</option>
+                                <option value="weight">Kilos to Pounds</option>
+                                <option value="length">Meters to Yards</option>
+                                <option value="heat">Celsius to Fahrenheit</option>
+                            </select>
+                        </form>
+                        
+                        <form action="" id="weight">
+                                <br>
+                            <input  type="number" name="" placeholder="Kilo" id="kilos" class="form-control">
+                            <br>
+                            <input  type="number" name="" placeholder="Pounds" id="pounds" class="form-control">
+                        </form>
+                        
+                        <form action="" id="length">
+                                <br>
+                            <input  type="number" name="" id="meter" placeholder="Meters" class="form-control">
+                                <br>
+                                <input  type="number" name="" id="yards" placeholder="Yards" class="form-control">
+                            </form>
+                            
+                        <form action="" id="heat">
+                                <br>
+                            <input  type="number" name="" id="Celsius" placeholder="Celsius" class="form-control">
+                                <br>
+                                <input  type="number" name="" id="Fahrenheit" placeholder="Fahrenheit" class="form-control">
+                            </form>
+                            
+                    </div>
+                    
+                </div>                   
+            </div>
+            
+        </div>
+        <p on></p>
+        <script>
+            $(document).ready(function(){
+                $("#weight").hide();
+                $("#length").hide();
+                $("#heat").hide();
+                $("#opn").on('change',function(){
+                var opn=$("#opn").val();
+                 switch(opn)
+                 {
+                     case 'weight':
+                            $("#weight").show();
+                            $("#length").hide();
+                            $("#heat").hide();
+                            break;
+                    case 'length':
+                            $("#weight").hide();
+                            $("#length").show();
+                            $("#heat").hide();
+                            break;
+                    case 'heat':
+                            $("#weight").hide();
+                            $("#length").hide();
+                            $("#heat").show();
+                            break;
+                    default:
+                            $("#weight").hide();
+                            $("#length").hide();
+                            $("#heat").hide();
+                        
+                 }
+                });
+                $("#kilos").on('input',function(){
+                    var kilo=$("#kilos").val();
+                    $("#pounds").val(kilo*2.20462262);
+                })
+                
+                $("#pounds").on('input',function(){
+                    var pounds=$("#pounds").val();
+                    $("#kilos").val(pounds/2.20462262);
+                })
+                $("#meter").on('input',function(){
+                    var meter=$("#meter").val();
+                    $("#yards").val(meter*1.094);
+                });  $("#yards").on('input',function(){
+                    var yards=$("#yards").val();
+                    $("#meter").val(yards/1.094);
+                })
+                $("#Celsius").on('input',function(){
+                    var Celsius=$("#Celsius").val();
+                    var con=9/5;
+                    $("#Fahrenheit").val((Celsius*con)+32);
+                })
+                
+                $("#Fahrenheit").on('input',function(){
+                    var Fahrenheit=$("#Fahrenheit").val();
+                    var con=9/5;
+                    $("#Celsius").val((Fahrenheit-32)*con);
+                })
+            });
+        </script>    
+    </body >
+    
+</html>
